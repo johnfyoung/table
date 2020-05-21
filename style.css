@@ -58,7 +58,7 @@ header {
 }
 
 .responsive-table-col1 {
-    width:200px;
+    /* width:200px; */
 }
 
 .responsive-table-row1 {
@@ -67,6 +67,14 @@ header {
     top:0;
     left:0;
 }
+
+.responsive-table-corner {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+}
+
+
 
 .responsive-table tbody {
     /* display: block;
@@ -93,4 +101,8 @@ header {
     position: absolute;
     top:0;
     left:0;
+}
+
+.responsive-table-corner th {
+    color: #000 !important;
 }
