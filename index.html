@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div id="content" class="container"></div>
+    <script>
+
+        const createTable = (data) => {
+            const tbl = document.createElement("table");
+            tbl.classList.add("responsive-table");
+            data.forEach((dataRow, i) => {
+                const row = document.createElement("tr");
+                const type = i === 0 ? "th" : "td";
+                dataRow.forEach((dataCol, i) => {
+                    const cell = document.createElement(type);
+                    cell.textContent = dataCol;
+                    row.append(cell);
+                });
+                tbl.append(row);
+            });
+
+            return tbl;
+        };
+
+        const mockData = (rows, cols) => {
+            const data = [];
+            for (let i = 0; i < rows; i++) {
+                const row = [];
+                for (let j = 0; j < cols; j++) {
+                    if (i === 0) {
+                        row.push(`Col ${j}`);
+                    } else {
+                        row.push(j === 0 ? `Row ${i}` : (Math.random() * Math.pow(10, Math.floor(Math.random() * 4))).toFixed(5));
+                    }
+
+                }
+                data.push(row);
+            }
+            return data;
+        };
+        document.getElementById("content").append(createTable(mockData(100, 20)));
+    </script>
+</body>
+
+</html>

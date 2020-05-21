@@ -1,0 +1,30 @@
+.container {
+    width: 480px;
+    height: 640px;
+    margin: 0 auto;
+    overflow: scroll;
+}
+
+.responsive-table {
+    border-spacing: 0;
+    padding: 0;
+}
+
+.responsive-table tr:first-of-type th {
+    background-color: #000;
+    color: #fff;
+}
+
+.responsive-table tr th:first-of-type {
+    width: 100px;
+}
+
+.responsive-table tr th:not(:first-of-type) {
+    width: 50px;
+}
+
+.responsive-table tr td:first-of-type {
+    background-color: #000;
+    color: #fff;
+    width: 100px;
+}
