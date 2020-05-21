@@ -9,23 +9,48 @@
 </head>
 
 <body>
-    <div id="content" class="container"></div>
+    <header>Hi there</header>
+    <div id="content" class="container">
+        <div class="responsive-table-holder-data">
+            <!-- <div class="responsive-table-holder-frame-top"></div> -->
+        </div>
+        <div class="responsive-table-holder-frame-side"></div>
+
+    </div>
     <script>
 
-        const createTable = (data) => {
+        const createTable = (data, rows, cols, className) => {
             const tbl = document.createElement("table");
+            const thead = document.createElement("thead");
+            const tbody = document.createElement("tbody");
+            if (className) {
+                tbl.classList.add(className);
+            }
             tbl.classList.add("responsive-table");
             data.forEach((dataRow, i) => {
+                if (rows && i >= rows) {
+                    return;
+                }
                 const row = document.createElement("tr");
                 const type = i === 0 ? "th" : "td";
                 dataRow.forEach((dataCol, i) => {
+                    if (cols && i >= cols) {
+                        return;
+                    }
+
                     const cell = document.createElement(type);
-                    cell.textContent = dataCol;
+                    cell.innerHTML = dataCol;
                     row.append(cell);
                 });
-                tbl.append(row);
-            });
+                if (i === 0) {
+                    thead.append(row);
+                } else {
+                    tbody.append(row);
+                }
 
+            });
+            tbl.append(thead);
+            tbl.append(tbody);
             return tbl;
         };
 
@@ -35,9 +60,9 @@
                 const row = [];
                 for (let j = 0; j < cols; j++) {
                     if (i === 0) {
-                        row.push(`Col ${j}`);
+                        row.push(`Col&nbsp;${j}`);
                     } else {
-                        row.push(j === 0 ? `Row ${i}` : (Math.random() * Math.pow(10, Math.floor(Math.random() * 4))).toFixed(5));
+                        row.push(j === 0 ? `Row&nbsp;${i}` : (Math.random() * Math.pow(10, Math.floor(Math.random() * 4))).toFixed(5));
                     }
 
                 }
@@ -45,7 +70,9 @@
             }
             return data;
         };
-        document.getElementById("content").append(createTable(mockData(100, 20)));
+        document.querySelector(".responsive-table-holder-data").append(createTable(mockData(100, 20), null, null, "responsive-table-data"));
+        document.querySelector(".responsive-table-holder-frame-side").append(createTable(mockData(100, 20), null, 1, "responsive-table-col1"));
+        document.querySelector(".responsive-table-holder-data").append(createTable(mockData(100, 20), 1, 0, "responsive-table-row1"));
     </script>
 </body>
 

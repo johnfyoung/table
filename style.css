@@ -1,13 +1,71 @@
+body {
+    margin: 0;
+    padding-top: 58px;
+    background: mistyrose;
+}
+
+header {
+    width:100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    padding: 20px 0px;
+    background-color: midnightblue;
+    color:#fff;
+    text-align: center;
+}
+
+.responsive-table-holder-frame-side {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+
+.responsive-table-holder-frame-top {
+    overflow-y: visible;
+    width: 100%;
+    position: absolute;
+    top: 0;
+
+}
+
+
+.responsive-table-holder-data {
+    overflow: scroll;
+}
+
 .container {
-    width: 480px;
-    height: 640px;
+    width:80vw;
     margin: 0 auto;
     overflow: scroll;
+    position: relative;
+    background-color: #fff;
+    height: 80vh;
 }
 
 .responsive-table {
     border-spacing: 0;
     padding: 0;
+    table-layout: fixed;
+}
+
+.responsive-table-data {
+    width:100%;
+}
+
+.responsive-table-col1 {
+    width:200px;
+}
+
+.responsive-table-row1 {
+    width:100%;
+}
+
+.responsive-table tbody {
+    /* display: block;
+    overflow-y: auto; */
 }
 
 .responsive-table tr:first-of-type th {
@@ -15,16 +73,19 @@
     color: #fff;
 }
 
-.responsive-table tr th:first-of-type {
-    width: 100px;
-}
-
-.responsive-table tr th:not(:first-of-type) {
-    width: 50px;
+.responsive-table td,
+.responsive-table th {
+    padding: 10px 20px;
+    width: 200px;
 }
 
 .responsive-table tr td:first-of-type {
     background-color: #000;
     color: #fff;
-    width: 100px;
+}
+
+.responsive-table.responsive-table-col1 {
+    position: absolute;
+    top:0;
+    left:0;
 }
