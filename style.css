@@ -34,12 +34,14 @@ header {
 
 .responsive-table-holder-data {
     overflow: scroll;
+    height: 80vh;
 }
 
 .container {
     width:80vw;
     margin: 0 auto;
-    overflow: scroll;
+    overflow-y: hidden;
+    overflow-x: hidden;
     position: relative;
     background-color: #fff;
     height: 80vh;
@@ -61,6 +63,9 @@ header {
 
 .responsive-table-row1 {
     width:100%;
+    position: absolute;
+    top:0;
+    left:0;
 }
 
 .responsive-table tbody {

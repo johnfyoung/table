@@ -11,11 +11,9 @@
 <body>
     <header>Hi there</header>
     <div id="content" class="container">
-        <div class="responsive-table-holder-data">
-            <!-- <div class="responsive-table-holder-frame-top"></div> -->
-        </div>
+        <div class="responsive-table-holder-data"></div>
+        <div class="responsive-table-holder-frame-top"></div>
         <div class="responsive-table-holder-frame-side"></div>
-
     </div>
     <script>
 
@@ -54,6 +52,7 @@
             return tbl;
         };
 
+
         const mockData = (rows, cols) => {
             const data = [];
             for (let i = 0; i < rows; i++) {
@@ -70,9 +69,21 @@
             }
             return data;
         };
+
+        const headerTbl = createTable(mockData(100, 20), 1, 0, "responsive-table-row1");
+        const colTable = createTable(mockData(100, 20), null, 1, "responsive-table-col1");
         document.querySelector(".responsive-table-holder-data").append(createTable(mockData(100, 20), null, null, "responsive-table-data"));
-        document.querySelector(".responsive-table-holder-frame-side").append(createTable(mockData(100, 20), null, 1, "responsive-table-col1"));
-        document.querySelector(".responsive-table-holder-data").append(createTable(mockData(100, 20), 1, 0, "responsive-table-row1"));
+        document.querySelector(".responsive-table-holder-frame-side").append(colTable);
+        document.querySelector(".responsive-table-holder-data").append(headerTbl);
+
+
+        document.querySelector(".responsive-table-holder-data").addEventListener("scroll", function (e) {
+            console.log(`top: ${e.target.scrollTop}, left: ${e.target.scrollLeft}`);
+            headerTbl.style.left = `-${e.target.scrollLeft}px`;
+            //headerTbl.style.top = `${e.target.scrollTop}px`;
+            headerTbl.style.top = `0px`;
+            colTable.style.top = `-${e.target.scrollTop}px`;
+        })
     </script>
 </body>
 
