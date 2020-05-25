@@ -1,92 +1,117 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="style.css">
-</head>
+    <link rel="stylesheet" href="style.css" />
+  </head>
 
-<body>
+  <body>
     <header>Hi there</header>
-    <div id="content" class="container">
+    <div class="container">
+      <div class="responsive-table-container">
         <div class="responsive-table-holder-data"></div>
         <div class="responsive-table-holder-frame-top"></div>
         <div class="responsive-table-holder-frame-side"></div>
+      </div>
     </div>
+
     <script>
-
-        const createTable = (data, rows, cols, className) => {
-            const tbl = document.createElement("table");
-            const thead = document.createElement("thead");
-            const tbody = document.createElement("tbody");
-            if (className) {
-                tbl.classList.add(className);
+      const createTable = (data, rows, cols, className) => {
+        const tbl = document.createElement("table");
+        const thead = document.createElement("thead");
+        const tbody = document.createElement("tbody");
+        if (className) {
+          tbl.classList.add(className);
+        }
+        tbl.classList.add("responsive-table");
+        data.forEach((dataRow, i) => {
+          if (rows && i >= rows) {
+            return;
+          }
+          const row = document.createElement("tr");
+          const type = i === 0 ? "th" : "td";
+          dataRow.forEach((dataCol, i) => {
+            if (cols && i >= cols) {
+              return;
             }
-            tbl.classList.add("responsive-table");
-            data.forEach((dataRow, i) => {
-                if (rows && i >= rows) {
-                    return;
-                }
-                const row = document.createElement("tr");
-                const type = i === 0 ? "th" : "td";
-                dataRow.forEach((dataCol, i) => {
-                    if (cols && i >= cols) {
-                        return;
-                    }
 
-                    const cell = document.createElement(type);
-                    cell.innerHTML = dataCol;
-                    row.append(cell);
-                });
-                if (i === 0) {
-                    thead.append(row);
-                } else {
-                    tbody.append(row);
-                }
+            const cell = document.createElement(type);
+            cell.innerHTML = dataCol;
+            row.append(cell);
+          });
+          if (i === 0) {
+            thead.append(row);
+          } else {
+            tbody.append(row);
+          }
+        });
+        tbl.append(thead);
+        tbl.append(tbody);
+        return tbl;
+      };
 
-            });
-            tbl.append(thead);
-            tbl.append(tbody);
-            return tbl;
-        };
-
-
-        const mockData = (rows, cols) => {
-            const data = [];
-            for (let i = 0; i < rows; i++) {
-                const row = [];
-                for (let j = 0; j < cols; j++) {
-                    if (i === 0) {
-                        row.push(`Col&nbsp;${j}`);
-                    } else {
-                        row.push(j === 0 ? `Row&nbsp;${i}` : (Math.random() * Math.pow(10, Math.floor(Math.random() * 4))).toFixed(5));
-                    }
-
-                }
-                data.push(row);
+      const mockData = (rows, cols) => {
+        const data = [];
+        for (let i = 0; i < rows; i++) {
+          const row = [];
+          for (let j = 0; j < cols; j++) {
+            if (i === 0) {
+              row.push(`Col&nbsp;${j}`);
+            } else {
+              row.push(
+                j === 0
+                  ? `Row&nbsp;${i}`
+                  : (
+                      Math.random() *
+                      Math.pow(10, Math.floor(Math.random() * 4))
+                    ).toFixed(5)
+              );
             }
-            return data;
-        };
+          }
+          data.push(row);
+        }
+        return data;
+      };
 
-        const headerTbl = createTable(mockData(100, 20), 1, 0, "responsive-table-row1");
-        const colTable = createTable(mockData(100, 20), null, 1, "responsive-table-col1");
-        document.querySelector(".responsive-table-holder-data").append(createTable(mockData(100, 20), null, null, "responsive-table-data"));
+      const headerTbl = createTable(
+        mockData(100, 20),
+        1,
+        0,
+        "responsive-table-row1"
+      );
+      const colTable = createTable(
+        mockData(100, 20),
+        null,
+        1,
+        "responsive-table-col1"
+      );
+      document
+        .querySelector(".responsive-table-holder-data")
+        .append(
+          createTable(mockData(100, 20), null, null, "responsive-table-data")
+        );
 
-        document.querySelector(".responsive-table-holder-data").append(colTable);
-        document.querySelector(".responsive-table-holder-data").append(headerTbl);
-        document.querySelector(".responsive-table-holder-data").append(createTable(mockData(100, 20), 1, 1, "responsive-table-corner"));
+      document.querySelector(".responsive-table-holder-data").append(colTable);
+      document.querySelector(".responsive-table-holder-data").append(headerTbl);
+      document
+        .querySelector(".responsive-table-holder-data")
+        .append(
+          createTable(mockData(100, 20), 1, 1, "responsive-table-corner")
+        );
 
-
-        document.querySelector(".responsive-table-holder-data").addEventListener("scroll", function (e) {
-            e.preventDefault();
-            console.log(`top: ${e.target.scrollTop}, left: ${e.target.scrollLeft}`);
-            headerTbl.style.left = `-${e.target.scrollLeft}px`;
-            headerTbl.style.top = `0px`;
-            colTable.style.top = `-${e.target.scrollTop}px`;
-        })
+      document
+        .querySelector(".responsive-table-holder-data")
+        .addEventListener("scroll", function (e) {
+          e.preventDefault();
+          console.log(
+            `top: ${e.target.scrollTop}, left: ${e.target.scrollLeft}`
+          );
+          headerTbl.style.left = `-${e.target.scrollLeft}px`;
+          headerTbl.style.top = `0px`;
+          colTable.style.top = `-${e.target.scrollTop}px`;
+        });
     </script>
-</body>
-
+  </body>
 </html>

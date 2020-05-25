@@ -1,111 +1,118 @@
+html {
+  scroll-padding-top: 58px;
+}
+
 body {
-    margin: 0;
-    background: mistyrose;
-    overflow: hidden;
+  background: mistyrose;
+  /* overflow: hidden; */
+  margin: 0;
+  box-sizing: border-box;
+  padding-top: 58px;
 }
 
 header {
-    width:100%;
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 100;
-    padding: 20px 0px;
-    background-color: midnightblue;
-    color:#fff;
-    text-align: center;
-}
-
-.responsive-table-holder-frame-side {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-}
-
-.responsive-table-holder-frame-top {
-    overflow-y: visible;
-    width: 100%;
-    position: absolute;
-    top: 0;
-
-}
-
-
-.responsive-table-holder-data {
-    overflow: scroll;
-    width: 100%;
-    height: 100vh;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  padding: 20px 0px;
+  background-color: midnightblue;
+  color: #fff;
+  text-align: center;
 }
 
 .container {
-    /* width:100vw; */
-    margin: 58px auto;
-    overflow-y: hidden;
-    overflow-x: hidden;
-    position: relative;
-    background-color: #fff;
-    /* height: 50vh; */
+  width: 1000px;
+  margin: 0 auto;
+}
+
+.responsive-table-container {
+  width: 100%;
+  margin: 0 auto;
+  overflow-y: hidden;
+  overflow-x: hidden;
+  position: relative;
+  background-color: #fff;
+  padding-bottom: 10px;
+}
+
+.responsive-table-holder-frame-side {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+.responsive-table-holder-frame-top {
+  overflow-y: visible;
+  width: 100%;
+  position: absolute;
+  top: 0;
+}
+
+.responsive-table-holder-data {
+  overflow: scroll;
+  width: 100%;
+  height: 100vh;
 }
 
 .responsive-table {
-    border-spacing: 0;
-    padding: 0;
-    table-layout: fixed;
+  border-spacing: 0;
+  padding: 0;
+  table-layout: fixed;
 }
 
 .responsive-table-data {
-    width:100%;
+  width: 100%;
 }
 
 .responsive-table-col1 {
-    /* width:200px; */
+  /* width:200px; */
 }
 
 .responsive-table-row1 {
-    width:100%;
-    position: absolute;
-    top:0;
-    left:0;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
 .responsive-table-corner {
-    position: absolute;
-    top: 0px;
-    left: 0px;
+  position: absolute;
+  top: 0px;
+  left: 0px;
 }
 
-
-
 .responsive-table tbody {
-    /* display: block;
+  /* display: block;
     overflow-y: auto; */
 }
 
 .responsive-table tr:first-of-type th {
-    background-color: #000;
-    color: #fff;
+  background-color: #000;
+  color: #fff;
 }
 
 .responsive-table td,
 .responsive-table th {
-    padding: 10px 20px;
-    width: 80px;
-    border-right: 1px solid #ccc;
-    border-bottom: 1px solid #ccc;
+  padding: 10px 20px;
+  width: 80px;
+  border-right: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
 }
 
 .responsive-table tr td:first-of-type {
-    background-color: #000;
-    color: #fff;
+  background-color: #000;
+  color: #fff;
 }
 
 .responsive-table.responsive-table-col1 {
-    position: absolute;
-    top:0;
-    left:0;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
 .responsive-table-corner th {
-    color: #000 !important;
+  color: #000 !important;
 }
